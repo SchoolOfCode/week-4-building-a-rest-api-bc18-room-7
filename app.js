@@ -40,6 +40,22 @@ app.get("/quotes/:id", async function (req, res) {
   res.json(quote);
 });
 
+//Create a new quote
+//Listen for POST request
+//path of /quotes
+//when we recieve a request
+//create a new quote object
+//add the new quote
+//respond with the new quote
+
+app.post("/quotes", async function (req, res) {
+  // const quoteText = req.body.quoteText;
+  // const author= req.body.author;
+  const { quoteText, author } = req.body;
+  const newQuote = await addQuote(quoteText, author);
+  res.status(201).json(newQuote);
+});
+
 app.listen(PORT, function () {
   console.log(`Server is now listening on http://localhost:${PORT}`);
 });
